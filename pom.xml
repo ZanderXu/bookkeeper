@@ -23,7 +23,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.apache.bookkeeper</groupId>
-  <version>4.12.0-SNAPSHOT</version>
+  <version>4.13.0-SNAPSHOT</version>
   <artifactId>bookkeeper</artifactId>
   <packaging>pom</packaging>
   <name>Apache BookKeeper :: Parent</name>
@@ -124,14 +124,14 @@
     <commons-lang3.version>3.6</commons-lang3.version>
     <commons-io.version>2.4</commons-io.version>
     <bouncycastle.version>1.60</bouncycastle.version>
-    <curator.version>4.0.1</curator.version>
+    <curator.version>5.1.0</curator.version>
     <dropwizard.version>3.1.0</dropwizard.version>
     <etcd.version>0.0.2</etcd.version>
     <freebuilder.version>1.14.9</freebuilder.version>
     <google.code.version>3.0.2</google.code.version>
     <google.errorprone.version>2.1.2</google.errorprone.version>
     <grpc.version>1.18.0</grpc.version>
-    <guava.version>21.0</guava.version>
+    <guava.version>30.0-jre</guava.version>
     <kerby.version>1.1.1</kerby.version>
     <hadoop.version>2.7.3</hadoop.version>
     <hamcrest.version>1.3</hamcrest.version>
@@ -139,7 +139,7 @@
     <jackson.version>2.11.0</jackson.version>
     <jackson-mapper-asl.version>1.9.11</jackson-mapper-asl.version>
     <jcommander.version>1.48</jcommander.version>
-    <jetty.version>9.4.5.v20170502</jetty.version>
+    <jetty.version>9.4.33.v20201020</jetty.version>
     <jline.version>2.11</jline.version>
     <jmh.version>1.19</jmh.version>
     <jmock.version>2.8.2</jmock.version>
@@ -150,8 +150,8 @@
     <lombok.version>1.18.10</lombok.version>
     <lz4.version>1.3.0</lz4.version>
     <mockito.version>3.0.0</mockito.version>
-    <netty.version>4.1.32.Final</netty.version>
-    <netty-boringssl.version>2.0.20.Final</netty-boringssl.version>
+    <netty.version>4.1.50.Final</netty.version>
+    <netty-boringssl.version>2.0.31.Final</netty-boringssl.version>
     <ostrich.version>9.1.3</ostrich.version>
     <powermock.version>2.0.2</powermock.version>
     <prometheus.version>0.8.1</prometheus.version>
@@ -159,16 +159,16 @@
     <httpclient.version>4.5.5</httpclient.version>
     <protobuf.version>3.5.1</protobuf.version>
     <protoc3.version>3.5.1-1</protoc3.version>
-    <protoc-gen-grpc-java.version>1.12.0</protoc-gen-grpc-java.version>
+    <protoc-gen-grpc-java.version>${grpc.version}</protoc-gen-grpc-java.version>
     <reflections.version>0.9.11</reflections.version>
-    <rocksdb.version>5.13.1</rocksdb.version>
+    <rocksdb.version>6.10.2</rocksdb.version>
     <shrinkwrap.version>3.0.1</shrinkwrap.version>
     <slf4j.version>1.7.25</slf4j.version>
     <snakeyaml.version>1.19</snakeyaml.version>
     <spotbugs-annotations.version>3.1.8</spotbugs-annotations.version>
     <javax-annotations-api.version>1.3.2</javax-annotations-api.version>
     <testcontainers.version>1.8.3</testcontainers.version>
-    <vertx.version>3.4.1</vertx.version>
+    <vertx.version>3.5.3</vertx.version>
     <zookeeper.version>3.5.7</zookeeper.version>
     <jctools.version>2.1.2</jctools.version>
     <!-- plugin dependencies -->
@@ -191,13 +191,14 @@
     <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
     <maven-shade-plugin.version>3.2.0</maven-shade-plugin.version>
     <maven-source-plugin.version>2.2.1</maven-source-plugin.version>
-    <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
+    <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
     <nar-maven-plugin.version>3.5.2</nar-maven-plugin.version>
     <os-maven-plugin.version>1.4.1.Final</os-maven-plugin.version>
     <protobuf-maven-plugin.version>0.5.0</protobuf-maven-plugin.version>
     <puppycrawl.checkstyle.version>6.19</puppycrawl.checkstyle.version>
     <spotbugs-maven-plugin.version>3.1.8</spotbugs-maven-plugin.version>
     <forkCount.variable>1</forkCount.variable>
+    <servlet-api.version>4.0.0</servlet-api.version>
   </properties>
 
   <!-- dependency definitions -->
@@ -357,6 +358,11 @@
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-annotations</artifactId>
         <version>${jackson.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>${servlet-api.version}</version>
       </dependency>
       <dependency>
         <groupId>com.fasterxml.jackson.module</groupId>
@@ -574,6 +580,11 @@
       </dependency>
       <dependency>
         <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-webapp</artifactId>
+        <version>${jetty.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-servlet</artifactId>
         <version>${jetty.version}</version>
       </dependency>
@@ -624,7 +635,7 @@
         <artifactId>sketches-core</artifactId>
         <version>${datasketches.version}</version>
       </dependency>
-      
+
       <!-- http-client -->
       <dependency>
         <groupId>org.apache.httpcomponents</groupId>
@@ -860,6 +871,7 @@
           <redirectTestOutputToFile>${redirectTestOutputToFile}</redirectTestOutputToFile>
           <forkCount>${forkCount.variable}</forkCount>
           <reuseForks>false</reuseForks>
+          <trimStackTrace>false</trimStackTrace>
           <forkedProcessTimeoutInSeconds>1800</forkedProcessTimeoutInSeconds>
           <rerunFailingTestsCount>${testRetryCount}</rerunFailingTestsCount>
         </configuration>
@@ -869,11 +881,9 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>${maven-javadoc-plugin.version}</version>
         <configuration>
+          <additionalparam>-notimestamp</additionalparam>
           <!-- Prevent missing javadoc comments from being marked as errors -->
-          <additionalparam>-Xdoclint:none -notimestamp</additionalparam>
-          <additionalOptions>
-            <additionalOption>-Xdoclint:none -notimestamp</additionalOption>
-          </additionalOptions>
+          <doclint>none</doclint>
           <subpackages>org.apache.bookkeeper.client:org.apache.bookkeeper.client.api:org.apache.bookkeeper.common.annotation:org.apache.bookkeeper.conf:org.apache.bookkeeper.feature:org.apache.bookkeeper.stats</subpackages>
           <groups>
             <group>
@@ -965,6 +975,7 @@
 
             <!-- Website -->
             <exclude>site/**</exclude>
+            <exclude>site2/**</exclude>
 
             <!-- Thrift generated files -->
             <exclude>**/org/apache/distributedlog/thrift/*</exclude>
